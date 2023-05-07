@@ -4,7 +4,7 @@
 
 from typing import List, Dict, Sequence
 from cachetools import LRUCache, Cache
-from Encoder import Encoder
+from Encoders.Encoder import Encoder
 
 
 class LogCluster:

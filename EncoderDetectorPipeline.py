@@ -1,5 +1,5 @@
-from Detector import Detector
-from Encoder import Encoder
+from Detectors.Detector import Detector
+from Encoders.Encoder import Encoder
 
 
 class EncoderDetectorPipeline:

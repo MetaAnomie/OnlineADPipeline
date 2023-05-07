@@ -1,5 +1,5 @@
 from os.path import exists
-from Evaluator import Evaluator
+from Evaluators.Evaluator import Evaluator
 
 
 class HDFSEvaluator(Evaluator):
