@@ -1,12 +1,12 @@
-2023/5/6 - Connecting to 10.123.45.123
-2023/5/6 - Connected to 10.123.45.123 in 2s
-2023/5/6 - Launching process thread #1
-2023/5/6 - Loaded 2 modules in 2 seconds
-2023/5/6 - Load Status: COMPLETE
-2023/5/7 - Disconnected from 10.123.45.123
-2023/5/7 - Connected to 10.101.22.200 in 13s
-2023/5/7 - Launching process thread #2
-2023/5/7 - Loaded 3 modules in 12 seconds
-2023/5/7 - Exception in thread #2
-2023/5/7 - Load Status: FAILED
-2023/5/7 - Disconnected from 10.101.22.200
+2023/5/6 13:12:01 - Connecting to 10.123.45.123
+2023/5/6 13:12:03 - Connected to 10.123.45.123 in 2s
+2023/5/6 13:12:03 - Launching process thread #1
+2023/5/6 13:12:03 - Loaded 2 modules in 2 seconds
+2023/5/6 13:12:04 - Load Status: COMPLETE
+2023/5/7 15:00:00 - Disconnected from 10.123.45.123
+2023/5/7 21:12:01 - Connected to 10.101.22.200 in 13s
+2023/5/7 21:12:01 - Launching process thread #2
+2023/5/7 21:12:13 - Loaded 3 modules in 12 seconds
+2023/5/7 21:12:15 - Exception in thread #2
+2023/5/7 21:12:16 - Load Status: FAILED
+2023/5/7 21:12:16 - Disconnected from 10.101.22.200
