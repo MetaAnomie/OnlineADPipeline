@@ -1,4 +1,4 @@
-# Online Anomaly Detection Pipeline
+# Componenet-Based Online Anomaly Detection Pipeline Framework
 Component-Based Online Anomaly Detection Pipeline Framework
 
 ## Large File Downloads
