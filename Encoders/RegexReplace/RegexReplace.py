@@ -51,5 +51,5 @@ class RegexReplace(Encoder):
                 replace = ""
             self._rules[rule] = replace
     
-    def reset_custom_rules(self):
-        self._rules = {}
+    def reset_replace_rules(self):
+        self._rules.clear()
