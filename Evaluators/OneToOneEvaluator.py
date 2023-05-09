@@ -24,3 +24,6 @@ class OneToOneEvaluator(Evaluator):
                     self._false_positives += 1
                 else:
                     self._true_negatives += 1
+    
+    def reset(self):
+        super().__init__()
