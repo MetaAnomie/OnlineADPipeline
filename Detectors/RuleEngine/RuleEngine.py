@@ -57,3 +57,8 @@ class RuleEngine(Detector):
                 self._events[data] = True
             if feedback is False:
                 self._events[data] = False
+                
+    def clear_rules(self):
+        self._rules.clear()
+        self._ci_rules.clear()
+
