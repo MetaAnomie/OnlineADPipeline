@@ -50,3 +50,6 @@ class RegexReplace(Encoder):
             if replace is None:
                 replace = ""
             self._rules[rule] = replace
+    
+    def reset_custom_rules(self):
+        self._rules = {}
