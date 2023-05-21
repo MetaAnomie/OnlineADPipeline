@@ -18,6 +18,9 @@ class LogCluster:
     def get_template(self):
         return ' '.join(self.log_template_tokens)
 
+    def get_clusterId(self):
+        return self.cluster_id
+
     def __str__(self):
         return f"ID={str(self.cluster_id).ljust(5)} : size={str(self.size).ljust(10)}: {self.get_template()}"
 
@@ -55,7 +58,8 @@ class Drain3(Encoder):
                  max_clusters=None,
                  extra_delimiters=(),
                  param_str="<*>",
-                 parametrize_numeric_tokens=True):
+                 parametrize_numeric_tokens=True,
+                 encode_to_indices=False):
         """
         Create a new Drain instance.
 
@@ -86,6 +90,7 @@ class Drain3(Encoder):
         self.max_clusters = max_clusters
         self.param_str = param_str
         self.parametrize_numeric_tokens = parametrize_numeric_tokens
+        self.encode_to_indices = encode_to_indices
 
         # key: int, value: LogCluster
         self.id_to_cluster = {} if max_clusters is None else LogClusterCache(maxsize=max_clusters)
@@ -329,7 +334,11 @@ class Drain3(Encoder):
             # noinspection PyStatementEffect
             self.id_to_cluster[match_cluster.cluster_id]
 
-        return match_cluster.get_template()
+        ret_val = match_cluster.get_template()
+        if self.encode_to_indices:
+            ret_val = match_cluster.get_clusterId()
+
+        return ret_val
 
     def get_clusters_ids_for_seq_len(self, seq_len: int):
         """
