@@ -7,10 +7,11 @@ from datetime import datetime, timedelta
 
 class DeepLog(Detector):
 
-    def __init__(self, training_records=10000, training_time=604800, top=1, window_size=4):
+    def __init__(self, training_records=10000, training_time=604800, top=3, window_size=4, epochs=2500):
         self._trainingRecords = training_records
         self._recordCount = 0
         self._trainingTime = datetime.now() + timedelta(seconds=training_time)
+        self._epochs = epochs if epochs > 0 else 3000
         self._startTime = datetime.now()
         self._device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self._input = 300
@@ -48,10 +49,10 @@ class DeepLog(Detector):
                 self._recordCount = self._recordCount + 1
         return ret_val
 
-    def train(self, epochs=1000, batch_size=128):
+    def train(self, batch_size=64):
         print("Training Network...")
         seqs = torch.Tensor(self._training_seqs).to(torch.long)
         labels = torch.Tensor(self._training_labels).to(torch.long)
-        self._model.fit(X=seqs, y=labels, epochs=epochs, batch_size=batch_size,
+        self._model.fit(X=seqs, y=labels, epochs=self._epochs, batch_size=batch_size,
                         criterion=nn.CrossEntropyLoss())
         self._training_complete = True
