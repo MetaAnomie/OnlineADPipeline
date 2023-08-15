@@ -37,3 +37,4 @@ class UniqueEvents(Detector):
                 self._events[data] = True
             if feedback is False:
                 self._events[data] = False
+        return data

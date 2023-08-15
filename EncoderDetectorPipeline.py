@@ -29,9 +29,15 @@ class EncoderDetectorPipeline:
                 self._detectors = detectors
 
     def feedback(self, data, anomalous):
-        if data is not None:
+        ret_val = data
+        if ret_val is not None and len(ret_val) > 0:
+            for encoder in self._encoders:
+                ret_val = encoder.feedback(ret_val, anomalous)
             for detector in self._detectors:
-                detector.feedback(data, anomalous)
+                ret_val = detector.feedback(ret_val, anomalous)
+        else:
+            ret_val = None
+        return ret_val
 
     def process(self, data):
         ret_val = data
@@ -40,5 +46,7 @@ class EncoderDetectorPipeline:
                 ret_val = e.encode(ret_val)
             for d in self._detectors:
                 ret_val = d.detect(ret_val)
+        else:
+            ret_val = None
         return ret_val
 

@@ -1,0 +1,50 @@
+2023.07.01 10:05:00 [INFO] Received Request from 10.12.133.124
+2023.07.01 10:05:23 [INFO] Using Mode: INT16
+2023.07.01 10:05:24 [INFO] Starting Request Handler: REQ# 1
+2023.07.01 10:05:27 [INFO] Loading Cache
+2023.07.01 10:06:29 [INFO] Completed: REQ# 1 (62s)
+2023.07.01 10:22:10 [INFO] Received Request from 10.14.113.12
+2023.07.01 10:22:33 [INFO] Using Mode: INT16
+2023.07.01 10:22:34 [INFO] Starting Request Handler: REQ# 2
+2023.07.01 10:22:36 [INFO] Loading Cache
+2023.07.01 10:23:45 [INFO] Completed: REQ# 2 (69s)
+2023.07.01 11:15:12 [INFO] Received Request from 12.18.135.112
+2023.07.01 11:15:30 [INFO] Using Mode: INT16
+2023.07.01 11:15:31 [INFO] Starting Request Handler: REQ# 3
+2023.07.01 11:15:32 [INFO] Loading Cache
+2023.07.01 11:16:31 [INFO] Completed: REQ# 3 (59s)
+2023.07.01 11:38:58 [INFO] Received Request from 10.123.115.14
+2023.07.01 11:39:20 [INFO] Using Mode: INT16
+2023.07.01 11:39:21 [INFO] Starting Request Handler: REQ# 4
+2023.07.01 11:39:23 [INFO] Loading Cache
+2023.07.01 11:40:21 [INFO] Completed: REQ# 4 (58s)
+2023.07.02 10:04:01 [INFO] Received Request from 10.12.133.124
+2023.07.02 10:04:24 [INFO] Using Mode: INT16
+2023.07.02 10:04:25 [INFO] Starting Request Handler: REQ# 5
+2023.07.02 10:04:28 [INFO] Loading Cache
+2023.07.02 10:05:30 [INFO] Completed: REQ# 5 (62s)
+2023.07.02 10:32:13 [INFO] Received Request from 10.17.113.11
+2023.07.02 10:32:36 [INFO] Using Mode: INT16
+2023.07.02 10:32:37 [INFO] Starting Request Handler: REQ# 6
+2023.07.02 10:32:39 [INFO] Loading Cache
+2023.07.02 10:33:48 [INFO] Completed: REQ# 6 (72s)
+2023.07.02 14:11:11 [INFO] Received Request from 10.26.45.120
+2023.07.02 14:11:29 [INFO] Using Mode: INT16
+2023.07.02 14:11:30 [INFO] Starting Request Handler: REQ# 7
+2023.07.02 14:11:30 [INFO] Loading Cache
+2023.07.02 14:12:30 [INFO] Completed: REQ# 7 (60s)
+2023.07.02 18:49:58 [INFO] Received Request from 10.123.115.14
+2023.07.02 18:49:15 [INFO] Using Mode: INT16
+2023.07.02 18:49:16 [INFO] Starting Request Handler: REQ# 8
+2023.07.02 18:49:18 [INFO] Loading Cache
+2023.07.02 18:50:22 [INFO] Completed: REQ# 8 (64s)
+2023.07.02 20:39:10 [INFO] Received Request from 10.111.102.65
+2023.07.02 20:39:31 [INFO] Using Mode: INT16
+2023.07.02 20:39:31 [INFO] Starting Request Handler: REQ# 9875
+2023.07.02 20:39:32 [INFO] Loading Cache
+2023.07.02 20:40:30 [INFO] Completed: REQ# 9875 (58s)
+2023.07.02 21:21:02 [INFO] Received Request from 10.12.101.97
+2023.07.02 21:21:12 [INFO] Using Mode: INT16
+2023.07.02 21:21:13 [INFO] Starting Request Handler: REQ# 894
+2023.07.02 21:21:20 [ERROR] Exception Loading Cache: Bad Input
+2023.07.02 21:21:21 [INFO] Completed: REQ# 894 (8s)

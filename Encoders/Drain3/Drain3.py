@@ -340,6 +340,9 @@ class Drain3(Encoder):
 
         return ret_val
 
+    def feedback(self, data, feedback):
+        return self.encode(data)
+
     def get_clusters_ids_for_seq_len(self, seq_len: int):
         """
         Return all clusters with the specified count of tokens
