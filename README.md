@@ -7,6 +7,7 @@ Component-Based Online Anomaly Detection Pipeline Framework
 ## Original Component Source
 Drain3: https://github.com/logpai/Drain3 <br>
 DeepLog: https://github.com/Thijsvanede/DeepLog
+Spell: https://github.com/logpai/logparser/tree/master/logparser/Spell
 
 ## Citation
 
