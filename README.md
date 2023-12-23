@@ -25,7 +25,7 @@ Please cite the following study when using this source:
 ```
 ## Releases
 
-[v1.1.0 - Log Drift Impact on Online Anomaly Detection Workflows](https://github.com/MetaAnomie/OnlineADPipeline/releases/tag/v1.1.0)
+[v1.1.0](https://github.com/MetaAnomie/OnlineADPipeline/releases/tag/v1.1.0) - Log Drift Impact on Online Anomaly Detection Workflows
 
 [All Releases](https://github.com/MetaAnomie/OnlineADPipeline/releases)
 
