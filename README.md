@@ -5,9 +5,15 @@ Component-Based Online Anomaly Detection Pipeline Framework
 /Logs/HDFS/HDFS.log: https://sanyei-imports.com/scott/files/HDFS.zip
 
 ## Original Component Source
+
+### Parsers
+
 Drain3: https://github.com/logpai/Drain3 <br>
-DeepLog: https://github.com/Thijsvanede/DeepLog <br>
 Spell: https://github.com/logpai/logparser
+
+### Anomaly Detection Methods
+
+DeepLog: https://github.com/Thijsvanede/DeepLog
 
 ## Citation
 
