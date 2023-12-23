@@ -23,6 +23,11 @@ Please cite the following study when using this source:
   address   = {Tokyo, Japan}
 }
 ```
+## Releases
+
+[v1.1.0 - Log Drift Impact on Online Anomaly Detection Workflows](https://github.com/MetaAnomie/OnlineADPipeline/releases/tag/v1.1.0)
+
+[All Releases](https://github.com/MetaAnomie/OnlineADPipeline/releases)
 
 ## Credits
 Nomura Securities Co., Ltd. x Waseda University (Japan)
