@@ -9,7 +9,8 @@ Component-Based Online Anomaly Detection Pipeline Framework
 ### Parsers
 
 Drain3: https://github.com/logpai/Drain3 <br>
-Spell: https://github.com/logpai/logparser
+Spell: https://github.com/logpai/logparser <br>
+Swisslog: https://github.com/IntelligentDDS/SwissLog
 
 ### Anomaly Detection Methods
 
