@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # This file implements the Drain algorithm for log parsing.
 # Based on https://github.com/logpai/logparser/blob/master/logparser/Drain/Drain.py by LogPAI team
-
+from datetime import datetime, timedelta
 from typing import List, Dict, Sequence
 from cachetools import LRUCache, Cache
 from Encoders.Encoder import Encoder
@@ -59,7 +59,9 @@ class Drain3(Encoder):
                  extra_delimiters=(),
                  param_str="<*>",
                  parametrize_numeric_tokens=True,
-                 encode_to_indices=False):
+                 encode_to_indices=False,
+                 training_records=10000,
+                 training_time=604800):
         """
         Create a new Drain instance.
 
@@ -90,11 +92,22 @@ class Drain3(Encoder):
         self.max_clusters = max_clusters
         self.param_str = param_str
         self.parametrize_numeric_tokens = parametrize_numeric_tokens
+
         self.encode_to_indices = encode_to_indices
+        self._trainingRecords = training_records
+        self._recordCount = 0
+        self._trainingTime = datetime.now() + timedelta(seconds=training_time)
+        self._startTime = datetime.now()
 
         # key: int, value: LogCluster
         self.id_to_cluster = {} if max_clusters is None else LogClusterCache(maxsize=max_clusters)
         self.clusters_counter = 0
+
+    def set_training_time(self, training_records, training_time):
+        self._startTime = datetime.now()
+        self._recordCount = 0
+        self._trainingRecords = training_records
+        self._trainingTime = datetime.now() + timedelta(seconds=training_time)
 
     @property
     def clusters(self):
@@ -309,34 +322,43 @@ class Drain3(Encoder):
         return content_tokens
 
     def encode(self, data):
+
         content_tokens = self.get_content_as_tokens(data)
         match_cluster = self.tree_search(self.root_node, content_tokens, self.sim_th, False)
 
-        # Match no existing log cluster
-        if match_cluster is None:
-            self.clusters_counter += 1
-            cluster_id = self.clusters_counter
-            match_cluster = LogCluster(content_tokens, cluster_id)
-            self.id_to_cluster[cluster_id] = match_cluster
-            self.add_seq_to_prefix_tree(self.root_node, match_cluster)
-            update_type = "cluster_created"
+        if self._recordCount < self._trainingRecords and datetime.now() <= self._trainingTime:
+            self._recordCount = self._recordCount + 1
 
-        # Add the new log message to the existing cluster
-        else:
-            new_template_tokens = self.create_template(content_tokens, match_cluster.log_template_tokens)
-            if tuple(new_template_tokens) == match_cluster.log_template_tokens:
-                update_type = "none"
+            # Match no existing log cluster
+            if match_cluster is None:
+                    self.clusters_counter += 1
+                    cluster_id = self.clusters_counter
+                    match_cluster = LogCluster(content_tokens, cluster_id)
+                    self.id_to_cluster[cluster_id] = match_cluster
+                    self.add_seq_to_prefix_tree(self.root_node, match_cluster)
+                    update_type = "cluster_created"
+
+            # Add the new log message to the existing cluster
             else:
-                match_cluster.log_template_tokens = tuple(new_template_tokens)
-                update_type = "cluster_template_changed"
-            match_cluster.size += 1
-            # Touch cluster to update its state in the cache.
-            # noinspection PyStatementEffect
-            self.id_to_cluster[match_cluster.cluster_id]
+                new_template_tokens = self.create_template(content_tokens, match_cluster.log_template_tokens)
+                if tuple(new_template_tokens) == match_cluster.log_template_tokens:
+                    update_type = "none"
+                else:
+                    match_cluster.log_template_tokens = tuple(new_template_tokens)
+                    update_type = "cluster_template_changed"
+                match_cluster.size += 1
+                # Touch cluster to update its state in the cache.
+                # noinspection PyStatementEffect
+                self.id_to_cluster[match_cluster.cluster_id]
 
-        ret_val = match_cluster.get_template()
+        ret_val = "OOV"
         if self.encode_to_indices:
-            ret_val = match_cluster.get_clusterId()
+            ret_val = -1
+            if match_cluster is not None:
+                ret_val = match_cluster.get_clusterId()
+        else:
+            if match_cluster is not None:
+                ret_val = match_cluster.get_template()
 
         return ret_val
 
