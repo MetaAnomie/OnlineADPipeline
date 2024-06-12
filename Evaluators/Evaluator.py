@@ -55,7 +55,7 @@ class Evaluator:
         return "Precision: {:.4f} | ".format(self.precision()) + \
                "Recall: {:.4f} | ".format(self.recall()) + \
                "Accuracy: {:.4f} | ".format(self.accuracy()) + \
-               "F-measure: {:.4f}\n".format(self.f_measure()) + \
+               "F-measure: {:.4f} | ".format(self.f_measure()) + \
                "FPR: {:.4f}\n".format(self.fpr()) + \
                "True Positives: {:d} | ".format(self._true_positives) + \
                "False Positives: {:d} | ".format(self._false_positives) + \
