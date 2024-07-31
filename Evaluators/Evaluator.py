@@ -26,42 +26,44 @@ class Evaluator:
             ret_val = 2 * ((precision * recall) / (precision + recall))
         return ret_val
 
+    def fpr(self):
+        ret_val = 0
+        if (self._false_positives + self._true_negatives) > 0:
+            ret_val = self._false_positives / (self._false_positives + self._true_negatives)
+        return ret_val
+
     def accuracy(self):
         ret_val = 0
-        tp = self.true_positives()
-        tn = self.true_negatives()
-        fp = self.false_positives()
-        fn = self.false_negatives()
-        if (tp + tn + fp + fn) > 0:
-            ret_val = (tp + tn) / \
-                      (tp + tn + fp + fn)
+        if (self._true_positives + self._true_negatives + self._false_positives + self._false_negatives) > 0:
+            ret_val = (self._true_positives + self._true_negatives) / \
+                      (self._true_positives + self._true_negatives + self._false_positives + self._false_negatives)
         return ret_val
 
     def recall(self):
         ret_val = 0
-        tp = self.true_positives()
-        fn = self.false_negatives()
-        if (tp + fn) > 0:
-            ret_val = tp / (tp + fn)
+        if (self._true_positives + self._false_negatives) > 0:
+            ret_val = self._true_positives / (self._true_positives + self._false_negatives)
         return ret_val
 
     def precision(self):
         ret_val = 0
-        tp = self.true_positives()
-        fp = self.false_positives()
-        if (tp+fp) > 0:
-            ret_val = tp / (tp + fp)
+        if (self._true_positives + self._false_positives) > 0:
+            ret_val = self._true_positives / (self._true_positives + self._false_positives)
         return ret_val
 
     def get_result_summary(self):
         return "Precision: {:.4f} | ".format(self.precision()) + \
                "Recall: {:.4f} | ".format(self.recall()) + \
                "Accuracy: {:.4f} | ".format(self.accuracy()) + \
-               "F-measure: {:.4f}\n".format(self.f_measure()) + \
-               "True Positives: {:d} | ".format(self.true_positives()) + \
-               "False Positives: {:d} | ".format(self.false_positives()) + \
-               "True Negatives: {:d} | ".format(self.true_negatives()) + \
-               "False Negatives: {:d}".format(self.false_negatives())
+               "F-measure: {:.4f} | ".format(self.f_measure()) + \
+               "FPR: {:.4f}\n".format(self.fpr()) + \
+               "True Positives: {:d} | ".format(self._true_positives) + \
+               "False Positives: {:d} | ".format(self._false_positives) + \
+               "True Negatives: {:d} | ".format(self._true_negatives) + \
+               "False Negatives: {:d}".format(self._false_negatives)
 
-    def evaluate(self, data, anomaly):
+    def evaluate(self, data, anomaly, ground_truth=None):
+        raise NotImplementedError("evaluate method implementation missing.")
+
+    def reset(self):
         raise NotImplementedError("evaluate method implementation missing.")

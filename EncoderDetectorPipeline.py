@@ -39,6 +39,12 @@ class EncoderDetectorPipeline:
             ret_val = None
         return ret_val
 
+    def retrain(self, training_records=None, training_time=None):
+        for encoder in self._encoders:
+            ret_val = encoder.retrain(training_records, training_time)
+        for detector in self._detectors:
+            ret_val = detector.retrain(training_records, training_time)
+
     def process(self, data):
         ret_val = data
         if ret_val is not None and len(ret_val) > 0:

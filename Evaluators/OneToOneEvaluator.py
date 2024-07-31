@@ -12,18 +12,23 @@ class OneToOneEvaluator(Evaluator):
                 for line in file:
                     self._anomalies.insert(0,line.strip())
 
-    def evaluate(self, data, anomaly):
+    def evaluate(self, data, anomaly, ground_truth=None):
+
         if data is not None and len(data) > 0:
-            if data in self._anomalies:
-                if anomaly:
-                    self._true_positives += 1
-                else:
-                    self._false_negatives += 1
+            if ground_truth is None:
+                ground_truth = (data in self._anomalies)
+
+        if ground_truth is True:
+            if anomaly is True:
+                self._true_positives += 1
             else:
-                if anomaly:
-                    self._false_positives += 1
-                else:
-                    self._true_negatives += 1
+                self._false_negatives += 1
+        else:
+            if anomaly is True:
+                self._false_positives += 1
+            else:
+                self._true_negatives += 1
+
     
     def reset(self):
         super().__init__()

@@ -5,3 +5,6 @@ class Detector:
 
     def feedback(self, data, feedback):
         pass
+
+    def retrain(self, training_records, training_time):
+        pass
