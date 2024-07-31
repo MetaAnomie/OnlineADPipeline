@@ -86,7 +86,6 @@ class HDFSEvaluator(Evaluator):
             if block_id is not None and ground_truth is not None:
                 self._cache_valid = False
                 if ground_truth is True:
-                    print(block_id)
                     if block_id not in self._anomalies:
                         self._anomalies[block_id] = [0, 0]
                     if anomaly is True:
